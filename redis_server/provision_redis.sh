@@ -14,7 +14,7 @@ sudo make install
 # config redis
 mkdir -p /etc/redis
 cp /tmp/redis-stable/redis.conf /etc/redis
-cp ~/color_count/redis_server/redis.service /etc/systemd/system/
+cp ~/color_count_redis/redis_server/redis.service /etc/systemd/system/
 
 
 sudo adduser --system --group --no-create-home redis

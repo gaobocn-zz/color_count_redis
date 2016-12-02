@@ -7,7 +7,7 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data 
-WorkingDirectory=/home/ubuntu/color_count/webserver
+WorkingDirectory=/home/ubuntu/color_count_redis/webserver
 #Environment="PATH=/home/ubuntu/one-and-done/vm-webserver/colorsenv/bin" # I don't think this matters
 
 #ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 --forwarded-allow-ips=* -m 007 wsgi:app
