@@ -20,7 +20,6 @@ server {
     }
 
     location /api/ {
-	include redis_params;
         set $redis_key $args;
 
         redis_pass	127.0.0.1:6379;
