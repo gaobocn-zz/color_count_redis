@@ -1,9 +1,6 @@
 # NGINX config fil. To be ln -s at /etc/nginx/sites-available/ & /etc/nginx/sites-enabled/
 
 upstream backend {
-    server 172.31.16.209:8000 weight=2;
-    server 172.31.16.210:8000 weight=2;
-    server 172.31.16.211:8000 weight=2;
     server 127.0.0.1:8000 weight=1;
 }
 
@@ -23,8 +20,15 @@ server {
     }
 
     location /api/ {
-        include proxy_params;
-        proxy_pass http://backend/api/;
+	include redis_params;
+        set $redis_key $args;
 
+        redis_pass	127.0.0.1:6379;
+        default_type	text/html;
+	error_page	404 = /fallback;
+    }
+
+    location = /fallback {
+	proxy_pass backend;
     }
 }
