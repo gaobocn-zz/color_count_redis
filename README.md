@@ -1,5 +1,7 @@
 # CS 5356 Final Project Count Color of a Image
 
+**Update: This template differences from [color_count](https://github.com/gaobocn/color_count) as it uses redis instead of SQL.**
+
 **This README is copied from [Chris Wang](https://github.com/mw866/one-and-done/blob/master/README.md) (mw866@cornell.edu).**
 
 Description: An API based on Flask, Gunicorn and NGINX
