@@ -7,3 +7,5 @@ Wand
 greenlet
 itsdangerous
 six
+redis
+flask_cache

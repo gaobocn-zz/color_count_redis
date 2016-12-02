@@ -23,9 +23,9 @@ class Colors(object):
         else:
             print "compute.."
             filename = url.split('/')[-1]
-            urllib.urlretrieve(url, 'data/%s' % filename)
+            urllib.urlretrieve(url, './%s' % filename)
 
-            k = subprocess.check_output("identify -format %k data/" + filename, shell=True)
+            k = subprocess.check_output("identify -format %k ./" + filename, shell=True)
             self.cache[url] = k
             return k
 
@@ -40,6 +40,10 @@ def cache_key():
     return url
 
 
+@app.route("/")
+def home():
+    return "To use the API, the URL must be `images.gaobocn.com/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png`."
+
 @app.route('/api/num_colors')
 @cache.cached(timeout=60*60*24, key_prefix=cache_key)
 def colors():
@@ -50,4 +54,4 @@ def colors():
     return worker.compute(url)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run()
